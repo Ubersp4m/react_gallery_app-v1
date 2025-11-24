@@ -9,12 +9,11 @@ const Search = (props) => {
         props.search(searchInput.current.value);
     }*/
     let navigate = useNavigate();
-    let pageParams = useParams();
    let searchInput = useRef();
     return (
          <form className="search-form" onSubmit={(e) => {
             e.preventDefault(); 
-            props.search(searchInput.current.value);
+            props.fetchData(searchInput.current.value);
             navigate('search/'+searchInput.current.value);
             }}>
         <input type="search" name="search" placeholder="Search" required ref={searchInput}/>

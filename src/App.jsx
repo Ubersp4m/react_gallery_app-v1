@@ -10,32 +10,30 @@ import apiKey from './config';
 
 
 function App() {
-  const [searchTerm, setSearchTerm] = useState('cats');
   const [imageData, setImageData] = useState(null);
   const [loadedData, setLoadedData] = useState(false);
-  const [pageTitle, setPageTitle] = useState();
-  /*let {pageTitleParam} = useParams();
-  setPageTitle(pageTitleParam);*/
+  //const [pageTitle, setPageTitle] = useState();
+ 
 
-  const handleSearch = (search) => {
-  /*  const query = useParams();
+  /*const handleSearch = (search) => {
+    const query = useParams();
     if(!search && query){
       console.log(query);
       setSearchTerm(query); 
     }
-    else{*/
+    else{
       console.log('in handleSearch: '+search);
       setSearchTerm(search);
     //}
-  }
+  }*/
 
-  const pageChange = (pageTitleParam) => {
+  /*const pageChange = (pageTitleParam) => {
     console.log('in pageChange: '+pageTitleParam);
     setPageTitle(pageTitleParam);
     setSearchTerm(pageTitleParam);
-  }
+  }*/
 
-  const fetchData = () => {
+  const fetchData = (searchTerm) => {
         fetch(`https://pixabay.com/api/?key=${apiKey}&q=${searchTerm}`)
           .then(response => {
             if(!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
@@ -50,23 +48,23 @@ function App() {
           });
       }
 
-  useEffect(() => {
+  /*useEffect(() => {
        fetchData();
        console.log('ran app useEffect');
-    },[searchTerm, pageTitle]);
+    },[searchTerm, pageTitle]);*/
   return (
     <div className="container">
-      <Search search={handleSearch}/>
-      <Nav search={handleSearch}/>
+      <Search fetchData={fetchData}/>
+      <Nav fetchData={fetchData}/>
       <Routes>
-        <Route path="cats"  element={<PhotoList imageData={imageData} pageTitle={pageChange} fetchData={fetchData}/>} />
-        <Route path="dogs" element={<PhotoList imageData={imageData} pageTitle={pageChange} fetchData={fetchData}/>} />
-        <Route path="computers" element={<PhotoList imageData={imageData} pageTitle={pageChange} fetchData={fetchData}/>} />
+        <Route path="cats"  element={<PhotoList imageData={imageData} fetchData={fetchData}/>} />
+        <Route path="dogs" element={<PhotoList imageData={imageData} fetchData={fetchData}/>} />
+        <Route path="computers" element={<PhotoList imageData={imageData} fetchData={fetchData}/>} />
         <Route path="/" element={loadedData ? (
           <PhotoList imageData={imageData}
-            pageTitle={pageChange} fetchData={fetchData}/>) : null 
+            fetchData={fetchData}/>) : null 
           } />
-        <Route path="search/:query" element={<PhotoList imageData={imageData} pageTitle={pageChange} fetchData={fetchData}/>}/>
+        <Route path="search/:query" element={<PhotoList imageData={imageData} fetchData={fetchData}/>}/>
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
