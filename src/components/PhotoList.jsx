@@ -16,8 +16,15 @@ const PhotoList = ({imageData, pageTitle}) => {
         else{
             pageTitle(query);
         }
-    },[query, location.pathname, pageTitle])
+    },[query, location.pathname, pageTitle]);
 
+    if(imageData===null){
+        return (
+            <div className="photo-container">
+                <h2>Loading data...</h2>
+            </div>
+        );
+    }
     return (
         <div className="photo-container">
             <h2>Results</h2>
