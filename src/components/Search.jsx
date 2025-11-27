@@ -4,31 +4,12 @@ import {useNavigate} from 'react-router-dom';
 const Search = (props) => {
 
     let navigate = useNavigate();
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-   let searchInput = useRef();
-=======
     let searchInput = useRef();
     
->>>>>>> Stashed changes
-=======
-    let searchInput = useRef();
-    
->>>>>>> Stashed changes
-=======
-    let searchInput = useRef();
-    
->>>>>>> Stashed changes
-=======
-    let searchInput = useRef();
-    
->>>>>>> Stashed changes
     return (
          <form className="search-form" onSubmit={(e) => {
             e.preventDefault(); 
-            props.fetchData(searchInput.current.value);
+            props.search(searchInput.current.value);
             navigate('search/'+searchInput.current.value);
             }}>
         <input type="search" name="search" placeholder="Search" required ref={searchInput}/>

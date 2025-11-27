@@ -1,65 +1,24 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import Photo from './Photo';
 import {useParams} from 'react-router-dom';
 
 
-
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-const PhotoList = ({imageData, fetchData}) => {
-    const {query} = useParams();
-    const [searchTerm, setSearchTerm] = useState('cats');
-
-    useEffect(() => {
-        console.log('in useEffect ' + query);
-        fetchData(query);  
-    },[query, searchTerm])
-=======
 const PhotoList = ({imageData, pageTitle}) => {
     const {query} = useParams();
     
     //facilitates path changes via query for searches and path for static pages
     useEffect(() => {
-=======
-const PhotoList = ({imageData, pageTitle}) => {
-    const {query} = useParams();
-    
-    //facilitates path changes via query for searches and path for static pages
-    useEffect(() => {
->>>>>>> Stashed changes
-=======
-const PhotoList = ({imageData, pageTitle}) => {
-    const {query} = useParams();
-    
-    //facilitates path changes via query for searches and path for static pages
-    useEffect(() => {
->>>>>>> Stashed changes
-=======
-const PhotoList = ({imageData, pageTitle}) => {
-    const {query} = useParams();
-    
-    //facilitates path changes via query for searches and path for static pages
-    useEffect(() => {
->>>>>>> Stashed changes
         let path = window.location.pathname.trim().slice(1);
         if(!path)path="cats";
-        if(!query)pageTitle(path);
+        if(!query && !path.includes('search')){
+            pageTitle(path);
+            console.log('path query: '+ query);
+        }
         else{
+            console.log('query: '+ query);
             pageTitle(query);
         }
     },[query, location.pathname, pageTitle])
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 
     return (
         <div className="photo-container">
