@@ -4,6 +4,7 @@ import {useParams} from 'react-router-dom';
 
 
 
+<<<<<<< Updated upstream
 const PhotoList = ({imageData, fetchData}) => {
     const {query} = useParams();
     const [searchTerm, setSearchTerm] = useState('cats');
@@ -12,6 +13,20 @@ const PhotoList = ({imageData, fetchData}) => {
         console.log('in useEffect ' + query);
         fetchData(query);  
     },[query, searchTerm])
+=======
+const PhotoList = ({imageData, pageTitle}) => {
+    const {query} = useParams();
+    
+    //facilitates path changes via query for searches and path for static pages
+    useEffect(() => {
+        let path = window.location.pathname.trim().slice(1);
+        if(!path)path="cats";
+        if(!query)pageTitle(path);
+        else{
+            pageTitle(query);
+        }
+    },[query, location.pathname, pageTitle])
+>>>>>>> Stashed changes
 
     return (
         <div className="photo-container">

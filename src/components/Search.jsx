@@ -1,15 +1,15 @@
 import React, {useRef} from 'react';
-import {useNavigate, useParams} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 const Search = (props) => {
 
-  /*  const handleSearchChange = (event) =>{
-        event.preventDefault();
-        console.log('search value: ' + searchInput.current.value);
-        props.search(searchInput.current.value);
-    }*/
     let navigate = useNavigate();
+<<<<<<< Updated upstream
    let searchInput = useRef();
+=======
+    let searchInput = useRef();
+    
+>>>>>>> Stashed changes
     return (
          <form className="search-form" onSubmit={(e) => {
             e.preventDefault(); 
