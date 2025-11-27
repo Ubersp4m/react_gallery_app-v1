@@ -14,8 +14,7 @@ function App() {
   const [loadedData, setLoadedData] = useState(false);
   const [searchTerm, setSearchTerm] = useState('cats');
 //fetches data inside the useEffect callback with function fetchData
- useEffect(() => {
-    
+ useEffect(() => { 
   const fetchData = () => {
       fetch(`https://pixabay.com/api/?key=${apiKey}&q=${searchTerm}`)
         .then(response => {

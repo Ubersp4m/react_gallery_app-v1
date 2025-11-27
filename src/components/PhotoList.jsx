@@ -12,10 +12,8 @@ const PhotoList = ({imageData, pageTitle}) => {
         if(!path)path="cats";
         if(!query && !path.includes('search')){
             pageTitle(path);
-            console.log('path query: '+ query);
         }
         else{
-            console.log('query: '+ query);
             pageTitle(query);
         }
     },[query, location.pathname, pageTitle])
