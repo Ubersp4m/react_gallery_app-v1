@@ -20,7 +20,7 @@ pids
 lib-
 
 #config for api key
-source/config.js
+src/config.js
 
 # Coverage directory used by tools like istanbul
 coverage
