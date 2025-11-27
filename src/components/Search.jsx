@@ -7,7 +7,12 @@ const Search = (props) => {
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
    let searchInput = useRef();
+=======
+    let searchInput = useRef();
+    
+>>>>>>> Stashed changes
 =======
     let searchInput = useRef();
     
