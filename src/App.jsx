@@ -14,6 +14,7 @@ function App() {
   const [loadedData, setLoadedData] = useState(false);
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   //const [pageTitle, setPageTitle] = useState();
  
 
@@ -120,11 +121,45 @@ function App() {
   }
 
 >>>>>>> Stashed changes
+=======
+
+//fetches data inside the useEffect callback with function fetchData
+ useEffect(() => {
+    
+  const fetchData = () => {
+      fetch(`https://pixabay.com/api/?key=${apiKey}&q=${searchTerm}`)
+        .then(response => {
+          if(!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+          return response.json();
+        }).then(data => {
+          //sets imageData to data objects array containing image urls
+          setImageData(data.hits);
+          setLoadedData(true);
+        })
+        .catch(error => {
+          console.log("There was an error parsing and/or fetching the request", error);
+        });
+    }
+
+       fetchData();
+    },[searchTerm]);
+
+  //sets searchTerm variable to re-render with useEffect dependency above
+  const handleSearch = (search) => {
+      setSearchTerm(search);
+  }
+//sets searchTerm based on page and path url, triggers useEffect thru dependency of searchTerm
+  const pageChange = (pageTitleParam) => {
+    setSearchTerm(pageTitleParam);
+  }
+
+>>>>>>> Stashed changes
   return (
     <div className="container">
       <Search fetchData={fetchData}/>
       <Nav fetchData={fetchData}/>
       <Routes>
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
         <Route path="cats"  element={<PhotoList imageData={imageData} fetchData={fetchData}/>} />
@@ -135,6 +170,16 @@ function App() {
             fetchData={fetchData}/>) : null 
           } />
         <Route path="search/:query" element={<PhotoList imageData={imageData} fetchData={fetchData}/>}/>
+=======
+        <Route path="/cats"  element={<PhotoList imageData={imageData} pageTitle={pageChange}/>} />
+        <Route path="/dogs" element={<PhotoList imageData={imageData} pageTitle={pageChange}/>} />
+        <Route path="/computers" element={<PhotoList imageData={imageData} pageTitle={pageChange}/>} />
+        <Route path="/" element={loadedData ? (
+          <PhotoList imageData={imageData}
+            pageTitle={pageChange}/>) : <NotFound /> 
+          } />
+        <Route path="search/:query" element={<PhotoList imageData={imageData} pageTitle={pageChange}/>}/>
+>>>>>>> Stashed changes
 =======
         <Route path="/cats"  element={<PhotoList imageData={imageData} pageTitle={pageChange}/>} />
         <Route path="/dogs" element={<PhotoList imageData={imageData} pageTitle={pageChange}/>} />

@@ -6,7 +6,12 @@ const Search = (props) => {
     let navigate = useNavigate();
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
    let searchInput = useRef();
+=======
+    let searchInput = useRef();
+    
+>>>>>>> Stashed changes
 =======
     let searchInput = useRef();
     
