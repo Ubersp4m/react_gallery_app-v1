@@ -22,8 +22,13 @@ function App() {
           return response.json();
         }).then(data => {
           //sets imageData to data objects array containing image urls
-          setImageData(data.hits);
-          setLoadedData(true);
+          if(data.hits.length > 0){
+            setImageData(data.hits);
+            setLoadedData(true);
+          }
+          else{
+            setLoadedData(false);
+          }
         })
         .catch(error => {
           console.log("There was an error parsing and/or fetching the request", error);
@@ -54,7 +59,10 @@ function App() {
           <PhotoList imageData={imageData}
             pageTitle={pageChange}/>) : <NotFound /> 
           } />
-        <Route path="search/:query" element={<PhotoList imageData={imageData} pageTitle={pageChange}/>}/>
+        <Route path="search/:query" element={loadedData ? (
+          <PhotoList imageData={imageData}
+            pageTitle={pageChange}/>) : <NotFound /> 
+          } />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
