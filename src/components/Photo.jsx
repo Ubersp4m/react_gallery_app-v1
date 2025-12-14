@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Photo = ({imageURL}) => {
+const Photo = ({imageURL, alt = 'Image'}) => {
     return (
         <li>
-            <img src={imageURL}/>
+            <img src={imageURL} alt={alt} loading="lazy" />
         </li>
     );
 
